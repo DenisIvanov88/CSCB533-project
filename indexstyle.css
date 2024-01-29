@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    color: #333;
+}
+
+.logout {
+    background-color: #007BFF;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    margin: 10px;
+    font-size: 18px;
+    width: 450px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #007BFF;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+a:hover {
+    text-decoration: underline;
+    text-decoration-color: black;
+}
+
+.blurred-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+}
+
+.content {
+    z-index: 1;
+    border: 15px solid #007BFF;
+    text-align: center;
+    color: black;
+    background-color: #007BFF;
+}
+
+.personal-gallery {
+    background-image: url('uploads/IMG_0239.png');
+}
+
+.forum-gallery {
+    background-image: url('path/to/forum_gallery_background.jpg');
+}

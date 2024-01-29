@@ -4,33 +4,28 @@ include("connection.php");
 include("functions.php");
 $user_data = check_login($con);
 
-//Handles file upload
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_FILES['image'])) {
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES['image']['name']);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    //Checks if the file is an image
     $check = getimagesize($_FILES['image']['tmp_name']);
     if ($check == false) {
         echo "File is not an image.";
         $uploadOk = 0;
     }
 
-    //Checks file size(<5MB)
     if ($_FILES['image']['size'] > 5 * 1024 * 1024) {
         echo "Sorry, your file is too large.";
         $uploadOk = 0;
     }
 
-    //Checks if image is allowed format
     if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" && $imageFileType != "webp") {
         echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
         $uploadOk = 0;
     }
 
-    //Uploads file if uploadOk is not 0
     if ($uploadOk == 0) {
         echo "Sorry, your file was not uploaded.";
     } else {
@@ -91,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_FILES['image'])) {
 
     <div class="gallery">
         <?php
-        $query = "SELECT * FROM forum_images";
+        $query = "SELECT * FROM forum_images ORDER BY uploaded_at DESC";
         $result = mysqli_query($con, $query);
 
 

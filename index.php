@@ -3,6 +3,16 @@ session_start();
 include("connection.php");
 include("functions.php");
 $user_data = check_login($con);
+
+$viewed_user_id = $user_data["user_id"];
+
+$queryPersonalGallery = "SELECT * FROM personal_gallery WHERE user_id = '$viewed_user_id' ORDER BY uploaded_at DESC LIMIT 1";
+$resultPersonalGallery = mysqli_query($con, $queryPersonalGallery);
+$latestPersonalGalleryImage = mysqli_fetch_assoc($resultPersonalGallery);
+
+$queryForumGallery = "SELECT * FROM forum_images ORDER BY uploaded_at DESC LIMIT 1";
+$resultForumGallery = mysqli_query($con, $queryForumGallery);
+$latestForumGalleryImage = mysqli_fetch_assoc($resultForumGallery);
 ?>
 
 
@@ -11,45 +21,26 @@ $user_data = check_login($con);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="indexstyle.css"/>
+
     <title>My project</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        a {
-            text-decoration: none;
-            color: #2196F3;
-            margin: 10px 0;
-            font-size: 18px;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
 <body>
-    Hello, <?php echo $user_data['user_name'];?>
-
     <h1>Index page</h1>
+
+    Hello, <?php echo $user_data['user_name'];?>
     
-    <a href="personalgallery.php">Personal Gallery</a>
+    <a style="background-image: url('<?php echo "uploads/" . $latestPersonalGalleryImage['image_name']; ?>');" href="personalgallery.php">
+        <div class="blurred-background"></div>
+        <div class="content">Personal Gallery</div>
+    </a>
 
-    <a href="forum.php">Forum Gallery</a>
+    <a style="background-image: url('<?php echo "uploads/" . $latestForumGalleryImage['image_name']; ?>');" href="forum.php">
+        <div class="blurred-background"></div>
+        <div class="content">Forum Gallery</div>
+    </a>
 
-    <a href="logout.php">Logout</a>
+    <a id="logout" href="logout.php">Logout</a>
 </body>
 </html>
