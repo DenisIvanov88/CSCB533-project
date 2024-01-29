@@ -1,0 +1,128 @@
+.gallery {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-container {
+    position: relative;
+    margin: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    width: 20%;
+}
+
+.image-container img {
+    width: 50%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.user-name {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 5px;
+}
+
+.expanded {
+    width: auto !important;
+    height: auto !important;
+}
+
+.upvote-container {
+    position: absolute;
+    top: -0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upvote-button {
+    width: 30px;
+    height: 30px;
+    background-image: url('vote_images/notupvoted.png');
+    background-size: cover;
+    cursor: pointer;
+}
+
+.upvoted {
+    background-image: url('vote_images/upvoted.png');
+}
+
+.upvote-count {
+    color: black;
+    font-weight: bold;
+}
+
+.most-upvoted {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.most-upvoted img {
+    max-width: 75%;
+    height: auto;
+    margin-top: 10px;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+}
+
+form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-upload-btn {
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    border: none;
+    outline: none;
+}
+
+.custom-upload-btn:hover {
+    background-color: #45a049;
+}
+
+a {
+    display: inline-block;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+a:hover {
+    background-color: #0056b3;
+}
+
+#file-name-display {
+    margin-top: 10px;
+    color: #333;
+}
